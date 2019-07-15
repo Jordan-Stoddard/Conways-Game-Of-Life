@@ -1,0 +1,38 @@
+.grid_container {
+  width: 50%;
+  border: 1px solid green;
+  display: flex;
+  justify-content: space-around;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
+    grid-template-rows: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
+
+    .dead {
+      width: 20px;
+      height: 20px;
+      border: 0.1px solid black;
+      display: flex;
+      background: white;
+    }
+
+    .alive {
+      width: 20px;
+      height: 20px;
+      border: 0.1px solid black;
+      display: flex;
+      background: black;
+    }
+  } // end of .grid
+
+    .default_grids_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+        button {
+            margin: 0 auto;
+        }
+    }
+} // end of grid_container
