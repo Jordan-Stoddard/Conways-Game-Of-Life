@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   defaultGrid1,
   defaultGrid2,
@@ -9,14 +9,17 @@ import Grid from "./Grid";
 import DefaultGridsContainer from "./DefaultGridsContainer";
 import getNeighbors from "../helper-functions/grid-neighbors";
 import Controls from "./Controls";
+import { useInterval } from "../helper-functions/custom-hooks";
+
 
 export default function GridContainer() {
   const [grid, setGrid] = useState(defaultGrid1);
   const [generation, setGeneration] = useState(0);
+  const [clickable, setClickable] = useState(true);
 
 
-  const startAutomata = e => {
-    e.preventDefault();
+  const stepThroughAutomata = () => {
+    let validGrid = false
     // neighbors[0] = north west neighbor
     // neighbors[1] = north neighbor
     // neighbors[2] = north east neighbor
@@ -57,15 +60,24 @@ export default function GridContainer() {
         return cell;
       }
       if (cell.alive && (livingNeighbors < 2 || livingNeighbors >= 4)) {
+        validGrid = true
         return { ...cell, alive: !cell.alive };
       }
       if (!cell.alive && livingNeighbors === 3) {
+        validGrid = true
         return { ...cell, alive: !cell.alive };
       }
       return cell;
     });
 
-    setGeneration(prevGeneration => (prevGeneration += 1));
+    if (validGrid) {
+      setGeneration(prevState => (prevState += 1));
+    } else {
+      setClickable(true)
+      return alert(
+        "Grid is invalid, or no changes will be made due to rules. \nToggle some live cells or select a default grid."
+      );
+    }
     setGrid(nextGeneration);
   };
 
@@ -93,19 +105,19 @@ export default function GridContainer() {
   const setDefaultGrid = e => {
     e.preventDefault();
     switch (e.target.value) {
-      case "Default Grid 1":
+      case "Clear Grid":
         setGrid(defaultGrid1);
         setGeneration(0);
         break;
-      case "Default Grid 2":
+      case "Default Grid 1":
         setGrid(defaultGrid2);
         setGeneration(0);
         break;
-      case "Default Grid 3":
+      case "Default Grid 2":
         setGrid(defaultGrid3);
         setGeneration(0);
         break;
-      case "Default Grid 4":
+      case "Default Grid 3":
         setGrid(defaultGrid4);
         setGeneration(0);
         break;
@@ -114,14 +126,26 @@ export default function GridContainer() {
     }
   };
 
+  useInterval(stepThroughAutomata, 1000, grid, clickable)
+
   return (
     <div className="grid_container">
       <h1>Generation: {generation}</h1>
       <div className="grid_and_default_buttons">
-        <Grid grid={grid} setGrid={setGrid} toggleLife={toggleLife} />
+        <Grid
+          grid={grid}
+          setGrid={setGrid}
+          toggleLife={toggleLife}
+          clickable={clickable}
+          stepThroughAutomata={stepThroughAutomata}
+        />
         <DefaultGridsContainer setDefaultGrid={setDefaultGrid} />
       </div>
-      <Controls startAutomata={startAutomata} />
+      <Controls
+        stepThroughAutomata={stepThroughAutomata}
+        setClickable={setClickable}
+        clickable={clickable}
+      />
     </div>
   );
 }
