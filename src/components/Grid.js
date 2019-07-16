@@ -3,7 +3,7 @@ import React from "react";
 export default function Grid({ grid, toggleLife }) {
   return (
     <div className="grid">
-      {grid.map(cell => {
+      {grid.map((cell, i) => {
         return (
           <div
             key={cell.id}
@@ -16,7 +16,5 @@ export default function Grid({ grid, toggleLife }) {
         );
       })}
     </div>
-
-    
   );
 }
