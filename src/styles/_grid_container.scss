@@ -3,13 +3,13 @@
   // border: 1px solid green;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 
   h1 {
     font-size: 1.6rem;
     font-weight: bolder;
     margin-bottom: 10px;
+    margin-left: 9%;
   }
 
   .grid_and_default_buttons {
@@ -18,27 +18,7 @@
     // border: 1px solid orange;
     width: 100%;
 
-    .grid {
-      display: grid;
-      grid-template-columns: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
-      grid-template-rows: 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px 20px;
-  
-      .dead {
-        width: 20px;
-        height: 20px;
-        border: 0.1px solid black;
-        display: flex;
-        background: white;
-      }
-  
-      .alive {
-        width: 20px;
-        height: 20px;
-        border: 0.1px solid black;
-        display: flex;
-        background: black;
-      }
-    } // end of .grid
+    
   
       .default_grids_container {
           display: flex;
