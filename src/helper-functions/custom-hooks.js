@@ -34,6 +34,10 @@ export const useGrid = () => {
   const [speedInput, setSpeedInput] = useState("");
   const [gridSize, setGridSize] = useState(15);
 
+  // - Takes in a number and creates an array of objects where the alive property will be randomly set to true or false,
+  // based on the size of the number passed in.
+  // - Resets the current generation to 0.
+  // - Sets the grid to be the random grid created.
   const createRandomGrid = num => {
     let numberOfCells = num * num;
     let randomGrid = [];
@@ -44,6 +48,17 @@ export const useGrid = () => {
     setGeneration(0);
     setGrid(randomGrid);
   };
+
+
+  // - First set a variable of validGrid to be False.
+
+  // nextGeneartion maps over the current grid, then checks for the current cell's neighbors.
+  // We then check for how many of the current cell's neighbors are alive.
+  // Based on how many are alive we return a cell either untouched, or we toggle
+  // it's alive state, based on the rules passed into the if statements.
+  // If we were able to toggle a cell's alive state, we know the grid is valid,
+  // So we increase the current generation count and set the grid to be nextGeneration.
+  // Else, we return an alert to the user letting them know the grid isn't valid.
 
   const stepThroughAutomata = () => {
     let validGrid = false;
@@ -108,6 +123,11 @@ export const useGrid = () => {
     setGrid(nextGeneration);
   };
 
+
+  // toggleLife creates a newGrid by mapping over the current grid.
+  // Inside the map we check if the current cell matches the data-id of the curren target.
+  // If it does we return that cell but toggle the alive boolean, else, we return the cell unchanged.
+  // We then set the grid to be the new grid.
   const toggleLife = e => {
     const column = e.target.dataset.column;
     const row = e.target.dataset.row;
@@ -129,6 +149,7 @@ export const useGrid = () => {
     setGrid(newGrid);
   };
 
+  // A helper function to set the grid based on what gets passed in onClick of the default grid buttons.
   const setDefaultGrid = e => {
     e.preventDefault();
     switch (e.target.value) {
