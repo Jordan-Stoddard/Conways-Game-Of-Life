@@ -1,8 +1,8 @@
 import React from "react";
-import ExplanatoryContainer from "./components/ExplanatoryContainer";
 import GridContainer from "./components/GridContainer";
 import RulesContainer from "./components/RulesContainer";
 import Title from "./components/Title";
+import About from './components/About'
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
         <GridContainer />
         <RulesContainer />
       </div>
+      <About />
     </div>
   );
 }
