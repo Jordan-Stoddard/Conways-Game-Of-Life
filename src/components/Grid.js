@@ -1,11 +1,12 @@
 import React from "react";
+import { gridDisplay, cellDisplay } from '../helper-functions/display-function'
 
 
-export default function Grid({ grid, toggleLife, clickable }) {
+export default function Grid({ grid, toggleLife, clickable, gridSize }) {
 
   
   return (
-    <div className="grid">
+    <div className="grid" style={gridDisplay(gridSize)}>
       {grid.map((cell, i) => {
         return (
           <div
@@ -13,8 +14,7 @@ export default function Grid({ grid, toggleLife, clickable }) {
             className={cell.alive ? "alive" : "dead"}
             onClick={clickable ? toggleLife : null}
             data-id={cell.id}
-            data-column={cell.column}
-            data-row={cell.row}
+            style={cellDisplay(cell.alive, gridSize)}
           />
         );
       })}
