@@ -1,9 +1,15 @@
 import React from "react";
 
-export default function Controls({ stepThroughAutomata, setClickable, clickable, speedInput, setSpeedInput }) {
+export default function Controls({
+  stepThroughAutomata,
+  setClickable,
+  clickable,
+  speedInput,
+  setSpeedInput
+}) {
   return (
     <div className="controls">
-        <h1>Controls:</h1>
+      <h1>Controls:</h1>
       <button
         onClick={e => {
           e.preventDefault();
@@ -13,9 +19,13 @@ export default function Controls({ stepThroughAutomata, setClickable, clickable,
         Step 1 Generation
       </button>
 
-      <input placeholder="Enter speed in milliseconds" value={speedInput} onChange={e => setSpeedInput(e.target.value)}/>
+      <input
+        placeholder="Enter speed in milliseconds"
+        value={speedInput}
+        onChange={e => setSpeedInput(e.target.value)}
+      />
       <button onClick={() => setClickable(prevState => !prevState)}>
-        {clickable ? 'Start' : 'Stop'}
+        {clickable ? "Start" : "Stop"}
       </button>
     </div>
   );
