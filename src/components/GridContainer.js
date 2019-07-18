@@ -21,8 +21,9 @@ export default function GridContainer() {
     gridSize,
     setGridSize
   ] = useGrid();
-  useInterval(stepThroughAutomata, +speedInput || 500, grid, clickable);
 
+  useInterval(stepThroughAutomata, +speedInput || 500, grid, clickable);
+  
   return (
     <div className="grid_container">
       <h1>Generation: {generation}</h1>
