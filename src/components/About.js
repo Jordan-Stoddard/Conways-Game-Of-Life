@@ -9,7 +9,7 @@ export default function About() {
         <a
           target="_blank"
           rel="noreferrer noopener"
-          href="https://jordansgameoflife.now.sh/"
+          href="https://medium.com/@jjsincorporated/how-i-built-conways-game-of-life-with-react-hooks-3bc6c2734aa/"
         >
           How I built Conway's Game of Life with React Hooks
         </a>
