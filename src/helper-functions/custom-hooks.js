@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   defaultGrid1,
   defaultGrid2,
@@ -38,7 +38,7 @@ export const useGrid = () => {
   // based on the size of the number passed in.
   // - Resets the current generation to 0.
   // - Sets the grid to be the random grid created.
-  const createRandomGrid = num => {
+  const createRandomGrid = useCallback(num => {
     let numberOfCells = num * num;
     let randomGrid = [];
 
@@ -47,18 +47,16 @@ export const useGrid = () => {
     }
     setGeneration(0);
     setGrid(randomGrid);
-  };
-
+  }, []);
 
   // - First set a variable of validGrid to be False.
-
-  // nextGeneartion maps over the current grid, then checks for the current cell's neighbors.
-  // We then check for how many of the current cell's neighbors are alive.
-  // Based on how many are alive we return a cell either untouched, or we toggle
+  // - nextGeneartion maps over the current grid, then checks for the current cell's neighbors.
+  // - We then check for how many of the current cell's neighbors are alive.
+  // - Based on how many are alive we return a cell either untouched, or we toggle
   // it's alive state, based on the rules passed into the if statements.
-  // If we were able to toggle a cell's alive state, we know the grid is valid,
-  // So we increase the current generation count and set the grid to be nextGeneration.
-  // Else, we return an alert to the user letting them know the grid isn't valid.
+  // - If we were able to toggle a cell's alive state, we know the grid is valid,
+  // - So we increase the current generation count and set the grid to be nextGeneration.
+  // - Else, we return an alert to the user letting them know the grid isn't valid.
 
   const stepThroughAutomata = () => {
     let validGrid = false;
@@ -122,7 +120,6 @@ export const useGrid = () => {
     }
     setGrid(nextGeneration);
   };
-
 
   // toggleLife creates a newGrid by mapping over the current grid.
   // Inside the map we check if the current cell matches the data-id of the curren target.
