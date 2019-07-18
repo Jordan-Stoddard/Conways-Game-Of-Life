@@ -1,23 +1,23 @@
-export const gridDisplay = num => {
-  if (num === 15) {
+export const gridDisplay = gridSize => {
+  if (gridSize === 15) {
     return {
       display: "grid",
-      gridTemplateColumns: `repeat(${num}, 20px)`,
-      gridTemplateRows: `repeat(${num}, 20px)`
+      gridTemplateColumns: `repeat(${gridSize}, 20px)`,
+      gridTemplateRows: `repeat(${gridSize}, 20px)`
     };
   }
-  if (num === 30) {
+  if (gridSize === 30) {
     return {
       display: "grid",
-      gridTemplateColumns: `repeat(${num}, 10px)`,
-      gridTemplateRows: `repeat(${num}, 10px)`
+      gridTemplateColumns: `repeat(${gridSize}, 10px)`,
+      gridTemplateRows: `repeat(${gridSize}, 10px)`
     };
   }
-  if (num === 50) {
+  if (gridSize === 50) {
     return {
       display: "grid",
-      gridTemplateColumns: `repeat(${num}, 6px)`,
-      gridTemplateRows: `repeat(${num}, 6px)`
+      gridTemplateColumns: `repeat(${gridSize}, 6px)`,
+      gridTemplateRows: `repeat(${gridSize}, 6px)`
     };
   }
 };
