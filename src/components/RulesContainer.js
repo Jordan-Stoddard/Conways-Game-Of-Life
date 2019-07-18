@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function RulesContainer() {
+  console.log("re-renders");
   return (
     <div className="rules_container">
       <h1>Rules of the Game:</h1>
