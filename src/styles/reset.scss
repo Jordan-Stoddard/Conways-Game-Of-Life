@@ -93,6 +93,7 @@ video {
   list-style: none;
   word-spacing: 0.3rem;
   letter-spacing: 0.1rem;
+  font-family: 'Roboto', 'serif';
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -149,4 +150,21 @@ a {
 h2,
 h3 {
   color: #333;
+}
+
+button {
+  background: radial-gradient(circle at 50% 400%,#6c9de2 0,#79adff 21.66%,#3560d0 65%,#0038a5 85.5%,#003498 100%);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  border: none;
+  color: #fff;
+  box-shadow: 4px 5px 1px -1px rgba(0,0,0,.1);
+  border-radius: 4px;
+  height: 32px;
+  width: 100px;
+  padding: none;
+  cursor: pointer;
 }
