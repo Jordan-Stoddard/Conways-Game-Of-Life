@@ -17,7 +17,7 @@ export default function About() {
 
       
       <p>
-        Learn more about Conway's Game of Life::{" "}
+        Learn more about Conway's Game of Life:{" "}
         <a
           target="_blank"
           rel="noreferrer noopener"
